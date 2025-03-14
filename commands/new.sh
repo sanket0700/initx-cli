@@ -17,7 +17,7 @@ TECHNOLOGY_OPTION=$1
 if [ -z "$TECHNOLOGY_OPTION" ]; then
     # Show CLI version and prompt to navigate help menu for "new" command
     sh "$COMMANDS_DIR/version.sh"
-    print "Run 'initx help new' for a list of available options."
+    print "Run 'initx help new' for a list of available options.\n\n"
     exit 1
 fi
 
@@ -30,4 +30,9 @@ fi
 
 case "$TECHNOLOGY_OPTION" in
     # node
+    "node")
+        sh "$COMMANDS_DIR/new/node.sh" "${2:-}" ;;
+    *)
+        print "Unsupported tech : $TECHNOLOGY_OPTION for 'initx new'." "ERROR"
+        print "Run 'initx list tech' to see supported technologies." ;;
 esac

@@ -34,12 +34,7 @@ case "$COMMAND" in
         sh "$COMMANDS_DIR/version.sh" ;;
     # NEW
     "new")
-        TECHNOLOGY_OPTION="$2"
-        if [ -z "$TECHNOLOGY_OPTION" ]; then
-            sh "$COMMANDS_DIR/new.sh"
-        else
-            sh "$COMMANDS_DIR/new.sh" "$TECHNOLOGY_OPTION"
-        fi ;;
+        sh "$COMMANDS_DIR/new.sh" "${2:-}" ;;
     # UNKNOWN
     *)
         echo "Error: Unknown command '$COMMAND'"
