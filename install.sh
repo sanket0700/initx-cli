@@ -9,6 +9,7 @@ INSTALL_DIR_GLOBAL="/usr/local/bin"
 INSTALL_DIR=""
 CONFIG_DIR="$HOME/.config/initx"
 REPO_CONFIG_FILE="$CONFIG_DIR/initx.conf"
+PROJECTS_FILE="$CONFIG_DIR/projects.txt"
 
 # Welcome message
 clear
@@ -65,6 +66,12 @@ fi
 # Setup config directory
 mkdir -p "$CONFIG_DIR"
 touch "$REPO_CONFIG_FILE"
+
+# Ensure projects.txt exists
+if [[ ! -f "$PROJECTS_FILE" ]]; then
+    echo "- Creating projects tracking file..."
+    touch "$PROJECTS_FILE"
+fi
 
 echo ""
 echo "-----------------------------------------------"
