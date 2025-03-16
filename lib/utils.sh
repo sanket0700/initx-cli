@@ -5,7 +5,7 @@ print() {
     SEVERITY=$2
 
     if [ -z "$MESSAGE" ]; then
-        print "ERROR" "There seems to be a broken link in the application."
+        print "There seems to be a broken link in the application." "ERROR"
     fi
 
     case "$SEVERITY" in
