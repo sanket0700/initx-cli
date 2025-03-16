@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -e  # Exit on error
+source "$(dirname "$0")/lib/prerequisites.sh"
+source "$(dirname "$0")/lib/utils.sh"
 
 # Define variables
 REPO_URL="https://github.com/sanket0700/initx-cli.git"
@@ -20,7 +22,12 @@ echo "| InitX-CLI - Skip the setup, start building! |"
 echo "-----------------------------------------------"
 echo ""
 
+# Pre-requisites check
+check_prerequisites
+print "Pre-requisites met. Proceeding with installation..." "SUCCESS"
+
 # Determine install mode
+echo "-------"
 echo "Install InitX-CLI for:"
 echo "  1) Current user (Recommended)"
 echo "  2) All users (Requires sudo)"
@@ -35,7 +42,7 @@ else
 fi
 
 echo ""
-echo "Installing to: $INSTALL_DIR..."
+print "Installing to: $INSTALL_DIR..."
 echo ""
 
 # Ensure install directory exists
