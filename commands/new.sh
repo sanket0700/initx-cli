@@ -31,7 +31,7 @@ fi
 case "$TECHNOLOGY_OPTION" in
     # node
     "node")
-        sh "$COMMANDS_DIR/new/node.sh" "${2:-}" ;;
+        sh "$COMMANDS_DIR/new/node.sh" "${@:2}" ;;
     *)
         print "Unsupported tech : $TECHNOLOGY_OPTION for 'initx new'." "ERROR"
         print "Run 'initx list tech' to see supported technologies." ;;

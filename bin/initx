@@ -34,7 +34,7 @@ case "$COMMAND" in
         sh "$COMMANDS_DIR/version.sh" ;;
     # NEW
     "new")
-        sh "$COMMANDS_DIR/new.sh" "${2:-}" ;;
+        sh "$COMMANDS_DIR/new.sh" "${@:2}" ;;
     # UNKNOWN
     *)
         echo "Error: Unknown command '$COMMAND'"
