@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# command structure : initx <command> [options]
+
+
+# Base Directory - The directory that contains all files for the CLI tool
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Commands Directory - The directory that contains all supported commands of the CLI tool
+COMMANDS_DIR="$BASE_DIR/../commands"
+
+COMMAND="$1"
+
+# If no COMMAND is provided, show CLI version and help menu
+if [ -z "$COMMAND" ]; then
+    # Show CLI version and help menu
+    sh "$COMMANDS_DIR/version.sh"
+    sh "$COMMANDS_DIR/help.sh"
+    exit 1
+fi
+
+
+case "$COMMAND" in
+    # HELP
+    "help" | "--help" | "-h")
+        SUB_COMMAND=$2
+        if [ -z "$SUB_COMMAND" ]; then
+            sh "$COMMANDS_DIR/help.sh"
+        else
+            sh "$COMMANDS_DIR/help.sh" "$SUB_COMMAND"
+        fi ;;
+    # VERSION
+    "version" | "--version" | "-v")
+        sh "$COMMANDS_DIR/version.sh" ;;
+    # NEW
+    "new")
+        sh "$COMMANDS_DIR/new.sh" "${@:2}" ;;
+    # UNKNOWN
+    *)
+        echo "Error: Unknown command '$COMMAND'"
+        echo "Run 'initx help' for a list of available commands." ;;
+esac
